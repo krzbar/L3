@@ -4,12 +4,9 @@ dijkstra <- function(graph, init){
 # original code
 # produces error: Error in is.data.frame(x) && do.NULL : invalid 'y' type in 'x && y'
 # also column names of graph are v1,v2,w
-#  stopifnot(colnames(graph, c("v1, v3, w")))
+stopifnot(colnames(graph, c("v1, v3, w")))
 # =============================================
 # corrected code that works
-stopifnot(setequal(colnames(graph), c("v1", "v2", "w")))
-stopifnot(is.data.frame(graph))
-stopifnot(is.element(init,graph$v1))
 # ========================================================================================
 #if (!setequal(colnames(wiki_graph), c("v1", "v2", "w"))){stop("wrong column names")} 
 no_vertices <- max(graph[,1], graph[,2])
