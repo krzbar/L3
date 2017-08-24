@@ -7,9 +7,12 @@ dijkstra <- function(graph, init){
 #  stopifnot(colnames(graph, c("v1, v3, w")))
 # =============================================
 # corrected code that works
-stopifnot(setequal(colnames(wiki_graph), c("v1", "v2", "w")))
+stopifnot(setequal(colnames(graph), c("v1", "v2", "w")))
+stopifnot(is.data.frame(graph))
+stopifnot(is.element(init,graph$v1))
 # ========================================================================================
-  no_vertices <- max(graph[,1], graph[,2])
+#if (!setequal(colnames(wiki_graph), c("v1", "v2", "w"))){stop("wrong column names")} 
+no_vertices <- max(graph[,1], graph[,2])
   
   dist <- numeric(no_vertices) + Inf
   dist[init] <- 0
